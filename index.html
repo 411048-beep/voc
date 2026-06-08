@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背單字 - Vocab Master</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">📚 Vocab Master</h1>
+            <div class="nav-buttons">
+                <button id="homeBtn" class="nav-btn active">首頁</button>
+                <button id="manageBtn" class="nav-btn">管理</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁 - 卡片學習頁面 -->
+    <section id="homePage" class="page active">
+        <div class="home-container">
+            <!-- 卡片容器 -->
+            <div class="card-wrapper">
+                <div id="card" class="card">
+                    <!-- 卡片正面 -->
+                    <div class="card-front">
+                        <div class="card-title">英文單字</div>
+                        <div id="wordDisplay" class="word-large">Click to start</div>
+                        <div class="card-hint">點擊翻頁</div>
+                    </div>
+                    <!-- 卡片背面 -->
+                    <div class="card-back">
+                        <div id="translationDisplay" class="translation"></div>
+                        <div id="partOfSpeechDisplay" class="part-of-speech"></div>
+                        <div id="exampleDisplay" class="example"></div>
+                        <div id="etymologyDisplay" class="etymology"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 控制按鈕 -->
+            <div class="controls">
+                <button id="prevBtn" class="btn btn-primary">← 上一個</button>
+                <span id="cardCounter" class="counter">0/0</span>
+                <button id="nextBtn" class="btn btn-primary">下一個 →</button>
+            </div>
+
+            <!-- 進度條 -->
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <!-- 統計信息 -->
+            <div class="stats">
+                <p>已加入單字：<span id="totalWords">0</span> 個</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 管理頁面 -->
+    <section id="managePage" class="page">
+        <div class="manage-container">
+            <h2>單字管理</h2>
+            
+            <!-- 新增單字表單 -->
+            <div class="form-section">
+                <h3>新增單字</h3>
+                <form id="addWordForm">
+                    <div class="form-group">
+                        <label for="wordInput">英文單字 *</label>
+                        <div class="input-group">
+                            <input type="text" id="wordInput" placeholder="輸入英文單字" required>
+                            <button type="button" id="autoFillBtn" class="btn btn-secondary">自動填入</button>
+                        </div>
+                        <small id="autoFillStatus" class="status-message"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="translationInput">中文翻譯 *</label>
+                        <input type="text" id="translationInput" placeholder="輸入中文翻譯" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partOfSpeechInput">詞性</label>
+                        <select id="partOfSpeechInput">
+                            <option value="">選擇詞性</option>
+                            <option value="noun">名詞 (noun)</option>
+                            <option value="verb">動詞 (verb)</option>
+                            <option value="adjective">形容詞 (adjective)</option>
+                            <option value="adverb">副詞 (adverb)</option>
+                            <option value="pronoun">代詞 (pronoun)</option>
+                            <option value="preposition">介詞 (preposition)</option>
+                            <option value="conjunction">連詞 (conjunction)</option>
+                            <option value="interjection">感嘆詞 (interjection)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInput">例句</label>
+                        <textarea id="exampleInput" placeholder="輸入例句" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="etymologyInput">字根分析</label>
+                        <textarea id="etymologyInput" placeholder="輸入字根分析或詞源" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">新增單字</button>
+                </form>
+            </div>
+
+            <!-- 單字列表 -->
+            <div class="list-section">
+                <h3>已新增的單字 (<span id="wordCount">0</span>)</h3>
+                <div id="wordsList" class="words-list">
+                    <p class="empty-message">還沒有新增任何單字</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
